@@ -1,3 +1,5 @@
 node_modules
 .env
 materi.js
+vercel.json
+.vercel
