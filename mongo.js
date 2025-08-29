@@ -9,14 +9,14 @@ const password = process.argv[2]
 
 const url = `mongodb+srv://azizthoriqul:${password}@cluster0.ynnvmdd.mongodb.net/Phonebook?retryWrites=true&w=majority&appName=Cluster0`
 
-mongoose.set('strictQuery',false)
+mongoose.set('strictQuery', false)
 
 mongoose.connect(url)
 
 const phoneSchema = new mongoose.Schema({
   name: String,
   number: String,
-  date: {type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
 })
 
 const Person = mongoose.model('Person', phoneSchema)
@@ -32,12 +32,11 @@ const Person = mongoose.model('Person', phoneSchema)
 // })
 
 if (process.argv.length < 4) {
-  Person.find({})
-  .then(result => {
+  Person.find({}).then((result) => {
     console.log('phonebook:')
-    result.map (person => {
+    result.map((person) => {
       console.log(person.name, person.number)
     })
-  mongoose.connection.close()
-})
-} 
+    mongoose.connection.close()
+  })
+}
